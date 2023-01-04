@@ -1,0 +1,30 @@
+on:
+  push:
+
+jobs:
+  test:
+    runs-on: macos-12
+    steps:
+      - name: Bootstrap vcpkg
+        run: |
+          git clone https://github.com/microsoft/vcpkg
+          git -C vcpkg checkout fa32c6acbd629ea4b06882aa170d2a571ea29430
+          ./vcpkg/bootstrap-vcpkg.sh
+
+      - name: Install native dependencies
+        run: |
+          brew install autoconf automake
+
+      - name: Install GMP
+        working-directory: vcpkg
+        continue-on-error: true
+        run: vcpkg install --host-triplet=x64-osx-release gmp
+
+      - name: Upload log files
+        uses: actions/upload-artifact@v3
+        with:
+          name: logs
+          path: |
+            /Users/runner/work/vcpkg-gmp-test/vcpkg-gmp-test/vcpkg/buildtrees/gmp/config-x64-osx-dbg-config.log
+            /Users/runner/work/vcpkg-gmp-test/vcpkg-gmp-test/vcpkg/buildtrees/gmp/config-x64-osx-dbg-out.log
+            /Users/runner/work/vcpkg-gmp-test/vcpkg-gmp-test/vcpkg/buildtrees/gmp/config-x64-osx-dbg-err.log
