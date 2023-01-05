@@ -18,7 +18,7 @@ jobs:
       - name: Install GMP
         working-directory: vcpkg
         continue-on-error: true
-        run: vcpkg install --host-triplet=x64-osx-release gmp
+        run: vcpkg install --debug --host-triplet=x64-osx-release gmp
 
       - name: Upload log files
         uses: actions/upload-artifact@v3
