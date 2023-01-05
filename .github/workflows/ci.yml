@@ -26,5 +26,6 @@ jobs:
           name: logs
           path: |
             /Users/runner/work/vcpkg-gmp-test/vcpkg-gmp-test/vcpkg/buildtrees/gmp/config-x64-osx-dbg-config.log
+            /Users/runner/work/vcpkg-gmp-test/vcpkg-gmp-test/vcpkg/buildtrees/gmp/config-x64-osx-release-rel-config.log
             /Users/runner/work/vcpkg-gmp-test/vcpkg-gmp-test/vcpkg/buildtrees/gmp/config-x64-osx-dbg-out.log
             /Users/runner/work/vcpkg-gmp-test/vcpkg-gmp-test/vcpkg/buildtrees/gmp/config-x64-osx-dbg-err.log
